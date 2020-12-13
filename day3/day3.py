@@ -1,5 +1,5 @@
 lines = []
-with open("/day3/input3.txt") as file:
+with open("input3.txt") as file:
     for line in file:
         line = line.strip()
         lines.append(line)

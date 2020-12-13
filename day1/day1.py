@@ -1,6 +1,6 @@
 lines = []
 part1val = 0
-with open("/day1/input1.txt") as file:
+with open("input1.txt") as file:
     for line in file:
         line = line.strip()
         lines.append(line)
