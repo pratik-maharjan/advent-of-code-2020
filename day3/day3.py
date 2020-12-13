@@ -4,17 +4,17 @@ with open("/Users/pmaharjan/Documents/advent-of-code-2020/day3/input.txt") as fi
         line = line.strip()
         lines.append(line)
 
-part1_tree = 0
+part1_trees = 0
 x = 0
 y = 0
 while y < len(lines):
     eachLine = lines[y]
     if eachLine[x] == "#":
-        part1_tree += 1
+        part1_trees += 1
     x = (x + 3) % 31
     y += 1
 
-print("Part 1: {0}".format(part1_tree))
+print("Part 1: {0}".format(part1_trees))
 
 
 multiplied_trees = 1

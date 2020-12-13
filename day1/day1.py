@@ -6,9 +6,9 @@ with open("/Users/pmaharjan/Documents/advent-of-code-2020/day1/input.txt") as fi
         lines.append(line)
 
 i = 0
-while (i < len(lines)):
+while i < len(lines):
     j = 0
-    while (j < len(lines)):
+    while j < len(lines):
         if (int(lines[i]) + int(lines[j])) == 2020:
             part1val = int(lines[i]) * int(lines[j])
         j += 1
@@ -18,11 +18,11 @@ print("Part 1: {0}".format(part1val))
 
 part2val = 0
 i = 0
-while (i < len(lines)):
+while i < len(lines):
     j = 0
-    while (j < len(lines)):
+    while j < len(lines):
         k = 0
-        while (k < len(lines)):
+        while k < len(lines):
             if (int(lines[i]) + int(lines[j]) + int(lines[k])) == 2020:
                 part2val = int(lines[i]) * int(lines[j]) * int(lines[k])
             k += 1

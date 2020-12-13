@@ -24,7 +24,7 @@ for l in lines:  # 15-16 f: ffffffffffffffhf
             if x == letter:
                 count += 1
         # print(count)
-        if int(count) >= int(lower) and int(count) <= int(upper):
+        if int(lower) <= int(count) <= int(upper):
             valid += 1
 
         # print
