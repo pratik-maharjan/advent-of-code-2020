@@ -1,6 +1,6 @@
 lines = []
 valid = 0
-with open("/Users/pmaharjan/Documents/advent-of-code-2020/day2/input.txt") as file:
+with open("/day2/input2.txt") as file:
     for line in file:
         line = line.strip()
         lines.append(line)
