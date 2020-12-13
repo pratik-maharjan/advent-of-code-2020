@@ -1,22 +1,36 @@
 lines = []
-with open("/Users/pmaharjan/Desktop/advent of code/day3/input.txt") as file:
-	for line in file:
-		line = line.strip()
-		lines.append(line)
+with open("/Users/pmaharjan/Documents/advent-of-code-2020/day3/input.txt") as file:
+    for line in file:
+        line = line.strip()
+        lines.append(line)
 
-counter = 1
-count = 0
-position = 0
-trees = 0
-for l in lines:
-	if(counter > 11):
-		counter = 0
-		position = 0
-	else:
-		if(l[position] == '#'):
-			trees += 1
-			position = position + 3
-		counter += 1
+part1_tree = 0
+x = 0
+y = 0
+while y < len(lines):
+    eachLine = lines[y]
+    if eachLine[x] == "#":
+        part1_tree += 1
+    x = (x + 3) % 31
+    y += 1
 
-print(trees)
-print(len(lines[0]))
+print("Part 1: {0}".format(part1_tree))
+
+
+multiplied_trees = 1
+slope_x_list = [1, 3, 5, 7, 1]
+slope_y_list = [1, 1, 1, 1, 2]
+for i in range(0, len(slope_y_list)):
+    x = 0
+    y = 0
+    part2_tree = 0
+    slope_x = slope_x_list[i]
+    slope_y = slope_y_list[i]
+    while y < len(lines):
+        eachLine = lines[y]
+        if eachLine[x] == "#":
+            part2_tree += 1
+        x = (x + slope_x) % 31
+        y += slope_y
+    multiplied_trees = multiplied_trees*part2_tree
+print("Part 2: {0}".format(multiplied_trees))
