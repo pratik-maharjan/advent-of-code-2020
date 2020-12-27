@@ -7,13 +7,30 @@ def parse(passport):
     # print(dictionary)
     return dictionary
 
+def validTwo(each):
+    val = 0
+    try:
+        if 'byr' in each and 'iyr' in each and 'eyr' in each and 'hgt' in each and 'hcl' in each and 'ecl' in each and 'pid' in each:
+            if (1920 <= int(each.get('bry')) <= 2002) and (2010 <= int(each.get('iyr')) <= 2020) and (2010 <= int(each.get('eyr')) <= 2020):
+                if (each.get('hgt')[-2:] == 'cm' and 150 <= each.get('hgt')[:-2] <= 193) or (each.get('hgt')[-2:] == 'in' and 59 <= each.get('hgt')[:-2] <= 76):
+                    if (each.get('ecl') == 'amb') or (each.get('ecl') == 'blu') or (each.get('ecl') == 'brn') or (each.get('ecl') == 'gry') or (each.get('ecl') == 'grn') or (each.get('ecl') == 'hzl') or (each.get('ecl') == 'oth'):
+                        if len(each.get('pid')) == 9 and each.get('pid').isnumeric():
+                            if each.get('hcl')[:1] == '#':
+                                for i in each.get('hcl')[1:]:
+                                    if i.isnumeric():
+                                        val = 1
+                                    else:
+                                        if i == 'a' or i == 'b' or i == 'c' or i == 'd' or i == 'e' or i == 'f':
+                                            val = 1
+    except:
+        val = val
+    return val
 
-def valid(each):
+def validOne(each):
     val = 0
     if 'byr' in each and 'iyr' in each and 'eyr' in each and 'hgt' in each and 'hcl' in each and 'ecl' in each and 'pid' in each:
         val = 1
     return val
-
 
 lines = []
 with open("input4.txt") as file:
@@ -41,11 +58,14 @@ passports.append(temp)
 # print(len(passports))
 
 eachPassport = {}
-total = 0
+totalOne = 0
+totalTwo = 0
 for p in passports:
     passport = p.split()
     eachPassport = parse(passport)
     # print(eachPassport)
-    total = total + valid(eachPassport)
+    totalOne = totalOne + validOne(eachPassport)
+    totalTwo = totalTwo + validTwo(eachPassport)
 
-print("Part 1: {0}".format(total))
+print("Part 1: {0}".format(totalOne))
+print("Part 2: {0}".format(totalTwo))
