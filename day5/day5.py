@@ -29,13 +29,23 @@ def getCol(input, start, end):
 
 
 highest = 0
+seats = []
 for l in lines:
     row = l[:7]
     col = l[7:]
     rowValue = getRow(row, 0, 127)
     colValue = getCol(col, 0, 7)
     seatId = (rowValue * 8) + colValue
+    seats.append(seatId)
     if highest < int(seatId):
         highest = int(seatId)
 
 print("Part 1: {0}".format(highest))
+
+
+seats.sort()
+mySeat = 0
+for s in range(len(seats)-1):
+    if seats[s+1] != seats[s]+1:
+        mySeat = seats[s]+1
+print("Part 2: {0}".format(mySeat))
