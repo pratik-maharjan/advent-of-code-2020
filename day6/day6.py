@@ -24,3 +24,31 @@ for g in groups:
 # print(unique)
 
 print("Part 1: {0}".format(sum(unique)))
+
+# separate into groups
+inter = []
+temp2 = []
+for l in lines:
+    if l != '':
+        temp2.append(l)
+    else:
+        inter.append(temp2)
+        temp2 = []
+inter.append(temp2)
+# print(inter)
+
+temp3 = []
+temp4 = []
+for i in inter:
+    for j in i:
+        temp3.append(set(j))
+    temp4.append(temp3)
+    temp3 = []
+
+# print(temp4)
+total = []
+for i in temp4:
+    intersection = set.intersection(*i)
+    total.append(len(intersection))
+
+print("Part 2: {0}".format(sum(total)))
